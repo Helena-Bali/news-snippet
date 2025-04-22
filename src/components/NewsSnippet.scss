@@ -1,6 +1,10 @@
 $text-color-light: #cccccc;
-$border-color: #333333;
 $text-color-medium: #a0a0a0;
+$border-color: #333333;
+$sentiment-positive-bg: #1e7d3a;
+$sentiment-positive-text: #ffffff;
+$tag-bg: #333333;
+$tag-text: $text-color-light;
 
 .news-snippet {
   color: $text-color-light;
@@ -14,10 +18,48 @@ $text-color-medium: #a0a0a0;
   &__top-bar {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
     align-items: center;
     margin-bottom: 10px;
-    font-size: 12px;
+    font-size: 14px;
     color: $text-color-medium;
+  }
+  &__top-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  &__top-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  &__traffic-info {
+    display: flex;
+    gap: 8px;
+  }
+  &__sentiment {
+    .ant-tag {
+      margin: 0;
+      padding: 2px 8px;
+      font-weight: bold;
+      border-radius: 4px;
+      font-size: 11px;
+    }
+    &--positive .ant-tag {
+      background-color: $sentiment-positive-bg;
+      color: $sentiment-positive-text;
+      border-color: $sentiment-positive-bg;
+    }
+  }
+
+  .action-icon {
+    color: $text-color-medium;
+    font-size: 16px;
+    cursor: pointer;
+    &:hover {
+      color: $text-color-light;
+    }
   }
 
 }
