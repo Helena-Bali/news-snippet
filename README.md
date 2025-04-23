@@ -1,6 +1,6 @@
 # News Snippet
 
- [Deploy](https://github.com).
+ [Deploy](https://news-snippet.netlify.app/)
 
 ## Available Scripts
 
