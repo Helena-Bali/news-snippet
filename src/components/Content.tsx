@@ -12,7 +12,7 @@ interface ContentProps {
 
 const Content: React.FC<ContentProps> = ({data}) => {
     const {
-        AB, URL, KW, FAV, HIGHLIGHTS
+        AB, URL, KW, HIGHLIGHTS
     } = data;
 
     const [showFullContent, setShowFullContent] = useState(false);
