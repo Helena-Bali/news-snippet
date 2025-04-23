@@ -2,7 +2,7 @@ import { JSX } from 'react';
 import { format, parseISO, Locale } from 'date-fns';
 import { enUS, it, de, es, fr } from 'date-fns/locale';
 import {Tag} from 'antd';
-import {IData_TrafficItem} from "./interfaces";
+import {IData_TrafficItem} from "../interfaces";
 
 const getDateLocale = (langCode: string): Locale => {
     switch (langCode.toLowerCase()) {

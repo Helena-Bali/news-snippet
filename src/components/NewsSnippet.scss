@@ -6,6 +6,8 @@ $sentiment-positive-text: #ffffff;
 $tag-bg: #333333;
 $tag-text: $text-color-light;
 $link-color: #529dff;
+$highlight-bg: #2a5a9e;
+$highlight-text: #ffffff;
 
 .news-snippet {
   color: $text-color-light;
@@ -117,6 +119,45 @@ $link-color: #529dff;
     vertical-align: middle;
     margin-right: 4px;
   }
+
+  &__content {
+    margin-bottom: 15px;
+    color: $text-color-light;
+    line-height: 1.6;
+    .keyword-highlight {
+      background-color: $highlight-bg;
+      color: $highlight-text;
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-weight: 500;
+    }
+  }
+  &__show-more-toggle {
+    color: $link-color;
+    cursor: pointer;
+    display: inline-block;
+    margin-left: 8px;
+    font-size: 13px;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__actions {
+    margin-top: 10px;
+    .ant-btn {
+      background-color: #3a3a3a;
+      border-color: #555555;
+      color: $link-color;
+      font-size: 12px;
+      padding: 0 12px;
+      &:hover, &:focus {
+        background-color: #4a4a4a;
+        color: #ffffff;
+      }
+    }
+  }
+
 
 }
 
