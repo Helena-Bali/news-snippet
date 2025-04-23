@@ -135,9 +135,9 @@ $highlight-text: #ffffff;
   &__show-more-toggle {
     color: $link-color;
     cursor: pointer;
-    display: inline-block;
-    margin-left: 8px;
+    display: block;
     font-size: 13px;
+    gap: 10px;
     &:hover {
       text-decoration: underline;
     }
@@ -158,6 +158,32 @@ $highlight-text: #ffffff;
     }
   }
 
+  &__tags {
+    margin-bottom: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    .ant-tag {
+      background-color: transparent;
+      color: $tag-text;
+      border: 1px solid $border-color;
+      border-radius: 40px;
+      padding: 3px 8px;
+      font-size: 12px;
 
+      .anticon {
+        vertical-align: middle;
+        margin-right: 4px;
+      }
+    }
+    .news-snippet__show-all-tags {
+      cursor: pointer;
+      background-color: $tag-bg;
+      color: $tag-text;
+      &:hover {
+        background-color: darken($tag-bg, 5%);
+      }
+    }
+  }
 }
 

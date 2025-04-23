@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import "./NewsSnippet.scss"
-import { contentToRender, canShowMoreContent } from "../utilits/content-utilits";
+import { contentToRender, canShowMoreContent, renderShowAllTagsButton, visibleTags} from "../utilits/content-utilits";
 import { Button } from 'antd';
-import { IData_SnippetNews } from '../interfaces';
+import { CaretDownOutlined, CaretUpOutlined } from '@ant-design/icons';
+import {IData_SnippetNews, IData_TagItem} from '../interfaces';
 
 interface ContentProps {
     data: IData_SnippetNews;
@@ -16,30 +17,31 @@ const Content: React.FC<ContentProps> = ({ data }) => {
     } = data;
 
     const [showFullContent, setShowFullContent] = useState(false);
+    const [showAllTags, setShowAllTags] = useState(false);
+    const initialTagLimit = 5;
 
     return (
         <>
             <div className="news-snippet__content">
                 {contentToRender(HIGHLIGHTS, AB, showFullContent)}
                 {canShowMoreContent(HIGHLIGHTS, AB) && (
-                    <span
+                    <div
                         className="news-snippet__show-more-toggle"
                         onClick={() => setShowFullContent(!showFullContent)}
                     >
                         {showFullContent ? 'Show less' : 'Show more'}
-                    </span>
+                        {showFullContent ? <CaretUpOutlined style={{ marginLeft: '5px' }}/> : <CaretDownOutlined style={{ marginLeft: '5px' }} />}
+                    </div>
                 )}
             </div>
 
-            {/* Tags */}
-            {/*{KW && KW.length > 0 && (*/}
-            {/*    <div className="news-snippet__tags">*/}
-            {/*        {visibleTags}*/}
-            {/*        {renderShowAllTagsButton}*/}
-            {/*    </div>*/}
-            {/*)}*/}
+            {KW && KW.length > 0 && (
+                <div className="news-snippet__tags">
+                    {visibleTags(KW, showAllTags, initialTagLimit)}
+                    {renderShowAllTagsButton(KW, initialTagLimit,showAllTags, setShowAllTags)}
+                </div>
+            )}
 
-            {/* Actions */}
             <div className="news-snippet__actions">
                 <Button
                     href={URL}

@@ -1,4 +1,7 @@
 import React from 'react'
+import {Tag} from 'antd';
+import {IData_TagItem} from "../interfaces";
+import { TagOutlined  } from '@ant-design/icons';
 
 const renderHighlightedText = (text: string): React.ReactNode => {
     const parts = text.split(/(<\/?kw>)/g).filter(part => part);
@@ -23,7 +26,7 @@ const renderHighlightedText = (text: string): React.ReactNode => {
 };
 
 
-export const contentToRender = (HIGHLIGHTS: string[], AB: string, showFullContent: any) => {
+export const contentToRender = (HIGHLIGHTS: string[], AB: string, showFullContent: boolean) => {
     let contentSource = '';
     if (HIGHLIGHTS && HIGHLIGHTS.length > 0) {
         contentSource = showFullContent ? HIGHLIGHTS.join(' ... ') : HIGHLIGHTS[0];
@@ -41,3 +44,28 @@ export const canShowMoreContent = (HIGHLIGHTS: string[], AB: string) => {
     return false;
 };
 
+export const visibleTags = (KW: IData_TagItem[], showAllTags: boolean,initialTagLimit: number,) => {
+    if (!KW) return [];
+    const tagsToDisplay = showAllTags ? KW : KW.slice(0, initialTagLimit);
+    return tagsToDisplay.map((tag: IData_TagItem) => (
+        <Tag key={tag.value} icon={<TagOutlined/>}>
+            {tag.value} {tag.count > 1 ? ` ${tag.count}` : ''}
+        </Tag>
+    ));
+}
+
+export const renderShowAllTagsButton = (KW: IData_TagItem[],
+                                        initialTagLimit: number,
+                                        showAllTags: boolean,
+                                        setShowAllTags: (showAllTags: boolean) => void) => {
+    if (!KW || KW.length <= initialTagLimit || showAllTags) return null;
+    const remainingCount = KW.length - initialTagLimit;
+    return (
+        <Tag
+            className="ant-tag news-snippet__show-all-tags"
+            onClick={() => setShowAllTags(true)}
+        >
+            Show All +{remainingCount}
+        </Tag>
+    );
+}
