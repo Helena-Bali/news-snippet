@@ -11,6 +11,7 @@ $highlight-text: #ffffff;
 $duplicate-border-color: $link-color;
 
 .news-snippet {
+  font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
   color: $text-color-light;
   padding: 15px;
   border: 1px solid $border-color;
@@ -27,6 +28,10 @@ $duplicate-border-color: $link-color;
     margin-bottom: 10px;
     font-size: 14px;
     color: $text-color-medium;
+    @media (max-width: 768px) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
   }
 
   &__top-left {
@@ -56,6 +61,13 @@ $duplicate-border-color: $link-color;
       background-color: $sentiment-positive-bg;
       color: $sentiment-positive-text;
       border-color: $sentiment-positive-bg;
+    }
+  }
+  .space {
+    @media (max-width: 768px) {
+      flex-direction: column;
+      align-items: flex-start;
+      margin-bottom: 10px;
     }
   }
 
@@ -114,9 +126,13 @@ $duplicate-border-color: $link-color;
     border-radius: 2px;
   }
   &__country-flag {
-    font-size: 16px;
+    font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif !important;
+    text-transform: none;
     vertical-align: middle;
     margin-right: 4px;
+    letter-spacing: normal;
+    font-variant-ligatures: common-ligatures;
+    display: inline-block;
   }
 
   &__content {
@@ -185,11 +201,11 @@ $duplicate-border-color: $link-color;
     }
   }
 
-  // --- Duplicates Section Styles ---
+  //  Duplicates Section Styles
   &__duplicates-section {
     margin-top: 15px;
-    padding-top: 15px; // Space above the header line
-    border-top: 1px solid $border-color; // Separator line
+    padding-top: 15px;
+    border-top: 1px solid $border-color;
   }
 
   &__duplicates-header {
@@ -197,7 +213,7 @@ $duplicate-border-color: $link-color;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 10px;
-    padding: 0 5px; // Small horizontal padding
+    padding: 0 5px;
     font-size: 13px;
     color: $text-color-medium;
   }
@@ -207,13 +223,13 @@ $duplicate-border-color: $link-color;
   }
 
   &__duplicates-sort {
-    cursor: pointer; // Indicate it's interactive (even if just display now)
+    cursor: pointer;
     &:hover {
       color: $text-color-light;
     }
   }
 
-  // --- Duplicate Item Styles ---
+  //  Duplicate Item Styles
   &__duplicate-item {
     border: 1px solid $duplicate-border-color;
     border-radius: 10px;
@@ -235,7 +251,7 @@ $duplicate-border-color: $link-color;
 
 
   &__view-duplicates {
-    text-align: center; // Center the button
+    text-align: center;
     margin-top: 5px;
 
     .view-duplicates-button {

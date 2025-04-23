@@ -88,5 +88,6 @@ export const getFlagEmoji = (countryCode: string): string => {
         .toUpperCase()
         .split('')
         .map(char => 127397 + char.charCodeAt(0));
+    console.log(String.fromCodePoint(...codePoints))
     return String.fromCodePoint(...codePoints);
 };

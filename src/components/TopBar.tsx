@@ -1,8 +1,9 @@
 import React, {useMemo} from 'react';
 import "./NewsSnippet.scss"
 import { IData_SnippetNews } from '../interfaces';
-import {formatDate, formatReach, formatTraffic, formatSentimentTag, getFlagEmoji} from '../utilits/top-bar-utilits'
+import {formatDate, formatReach, formatTraffic, formatSentimentTag} from '../utilits/top-bar-utilits'
 import {Space, Typography,} from 'antd';
+import flag from "../favicons/fr.png"
 import { InfoCircleOutlined, GlobalOutlined, BorderOutlined, ReadOutlined, UserOutlined } from '@ant-design/icons';
 
 interface TopBarProps {
@@ -12,7 +13,7 @@ interface TopBarProps {
 const TopBar: React.FC<TopBarProps> = ({data}) => {
     const {
         TI, URL, DOM, DP, LANG, REACH, AU, CNTR,
-        CNTR_CODE, SENT, TRAFFIC, FAV
+        CNTR_CODE, SENT, TRAFFIC
     } = data;
 
     const formattedDate = useMemo(() => formatDate(DP, LANG), [DP, LANG]);
@@ -23,13 +24,13 @@ const TopBar: React.FC<TopBarProps> = ({data}) => {
         <>
             <div className="news-snippet__top-bar">
                 <div className="news-snippet__top-left">
-                    <Space size="middle">
+                    <Space size="middle" className="space">
                         <span>{formattedDate}</span>
                         <span><strong>{formatReach(REACH)}</strong> Reach</span>
                         {formattedTraffic.length > 0 && (
-                            <span className="news-snippet__traffic-info">
+                            <div className="news-snippet__traffic-info">
                                 Top Traffic: <Space size="small">{formattedTraffic}</Space>
-                            </span>
+                            </div>
                         )}
                     </Space>
                 </div>
@@ -46,13 +47,14 @@ const TopBar: React.FC<TopBarProps> = ({data}) => {
             </Typography.Title>
             <div className="news-snippet__source-info">
                 <Space size="middle" wrap>
-                    {/*{FAV && <img src={FAV} alt="favicon" className="news-snippet__favicon" onError={(e) => (e.currentTarget.style.display = 'none')} />}*/}
                     <a href={URL} target="_blank" rel="noopener noreferrer">
                         <GlobalOutlined className="action-icon"/> {DOM}
                     </a>
                     {CNTR && CNTR_CODE && (
                         <span>
-                                {/*<span className="news-snippet__country-flag">{getFlagEmoji(CNTR_CODE)}</span>*/}
+                                <span className="news-snippet__country-flag">
+                                    {<img src={flag} alt="favicon" className="news-snippet__favicon" onError={(e) => (e.currentTarget.style.display = 'none')} />}
+                                </span>
                             {CNTR}
                             </span>
                     )}

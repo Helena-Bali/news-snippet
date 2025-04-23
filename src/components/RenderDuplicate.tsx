@@ -1,13 +1,14 @@
 import {Space, Typography,} from 'antd';
 import {InfoCircleOutlined, GlobalOutlined, CheckSquareOutlined, UserOutlined} from '@ant-design/icons';
 import {duplicateData} from '../data'
-import {useMemo} from "react";
+import React, {useMemo} from "react";
 import {formatDate, formatReach} from "../utilits/top-bar-utilits";
+import flag from "../favicons/fr.png";
 
 export const RenderFirstDuplicate = () => {
     const {
         TI, URL, DOM, DP, LANG, REACH, AU, CNTR,
-        CNTR_CODE, FAV
+        CNTR_CODE
     } = duplicateData;
     const formattedDate = useMemo(() => formatDate(DP, LANG), [DP, LANG]);
     const formattedReach = formatReach(REACH || 0);
@@ -36,14 +37,14 @@ export const RenderFirstDuplicate = () => {
 
             <div className="news-snippet__source-info news-snippet__source-info--duplicate">
                 <Space size="middle" wrap>
-                    {FAV && <img src={FAV} alt="favicon" className="news-snippet__favicon"
-                                 onError={(e) => (e.currentTarget.style.display = 'none')}/>}
                     <a href={URL} target="_blank" rel="noopener noreferrer">
                         <GlobalOutlined/> {DOM}
                     </a>
                     {CNTR && CNTR_CODE && (
                         <span>
-                                {/*<span className="news-snippet__country-flag">{getFlagEmoji(CNTR_CODE)}</span>*/}
+                                <span className="news-snippet__country-flag">
+                                    {<img src={flag} alt="favicon" className="news-snippet__favicon" onError={(e) => (e.currentTarget.style.display = 'none')} />}
+                                </span>
                             {CNTR}
                             </span>
                     )}
