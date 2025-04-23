@@ -1,9 +1,9 @@
 import React, {useMemo} from 'react';
 import "./NewsSnippet.scss"
 import { IData_SnippetNews } from '../interfaces';
-import {formatDate, formatReach, formatTraffic, formatSentimentTag} from '../utilits'
-import {Space} from 'antd';
-import { InfoCircleOutlined, CheckSquareOutlined, BorderOutlined } from '@ant-design/icons';
+import {formatDate, formatReach, formatTraffic, formatSentimentTag, getFlagEmoji} from '../utilits'
+import {Space, Typography,} from 'antd';
+import { InfoCircleOutlined, GlobalOutlined, BorderOutlined, ReadOutlined, UserOutlined } from '@ant-design/icons';
 
 interface NewsSnippetProps {
     data: IData_SnippetNews;
@@ -41,6 +41,28 @@ const NewsSnippet: React.FC<NewsSnippetProps> = ({data}) => {
                     </Space>
                 </div>
             </div>
+            <Typography.Title level={4} className="news-snippet__title">
+                <a href={URL} target="_blank" rel="noopener noreferrer">{TI}</a>
+            </Typography.Title>
+            <div className="news-snippet__source-info">
+                <Space size="middle" wrap>
+                    {FAV && <img src={FAV} alt="favicon" className="news-snippet__favicon" onError={(e) => (e.currentTarget.style.display = 'none')} />}
+                    <a href={URL} target="_blank" rel="noopener noreferrer">
+                        <GlobalOutlined className="action-icon"/> {DOM}
+                    </a>
+                    {CNTR && CNTR_CODE && (
+                        <span>
+                                {/*<span className="news-snippet__country-flag">{getFlagEmoji(CNTR_CODE)}</span>*/}
+                            {CNTR}
+                            </span>
+                    )}
+                    {LANG && <span><ReadOutlined className="action-icon"/> {LANG.toUpperCase()}</span>}
+                    {AU && AU.length > 0 && (
+                        <span><UserOutlined/> {AU.join(', ')}</span>
+                    )}
+                </Space>
+            </div>
+
         </div>
     );
 };

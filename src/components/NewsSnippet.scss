@@ -5,6 +5,7 @@ $sentiment-positive-bg: #1e7d3a;
 $sentiment-positive-text: #ffffff;
 $tag-bg: #333333;
 $tag-text: $text-color-light;
+$link-color: #529dff;
 
 .news-snippet {
   color: $text-color-light;
@@ -37,6 +38,7 @@ $tag-text: $text-color-light;
   &__traffic-info {
     display: flex;
     gap: 8px;
+    align-items: center;
   }
   &__sentiment {
     .ant-tag {
@@ -60,6 +62,60 @@ $tag-text: $text-color-light;
     &:hover {
       color: $text-color-light;
     }
+  }
+  &__title {
+    margin-top: 0;
+    margin-bottom: 8px !important;
+    a {
+      color: $link-color;
+      font-size: 18px;
+      font-weight: 500;
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+    &--duplicate a {
+      font-size: 16px;
+    }
+  }
+  &__source-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+    font-size: 13px;
+    color: $text-color-medium;
+    flex-wrap: wrap;
+    .anticon {
+      vertical-align: middle;
+      margin-right: 4px;
+    }
+
+    a {
+      color: $text-color-medium;
+      text-decoration: none;
+      &:hover {
+        color: $link-color;
+        text-decoration: underline;
+      }
+    }
+
+    &--duplicate {
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+  }
+  &__favicon {
+    width: 22px;
+    height: 22px;
+    vertical-align: middle;
+    margin-right: 4px;
+    border-radius: 2px;
+  }
+  &__country-flag {
+    font-size: 16px;
+    vertical-align: middle;
+    margin-right: 4px;
   }
 
 }
