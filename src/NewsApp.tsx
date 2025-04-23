@@ -1,6 +1,6 @@
 import React from 'react';
 import NewsSnippet from "./components/NewsSnippet";
-import {newsData} from "./data";
+
 
 const App: React.FC = () => {
     return (
