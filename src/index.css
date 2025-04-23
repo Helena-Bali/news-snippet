@@ -15,5 +15,5 @@ code {
 .main {
   padding: 20px;
   background: radial-gradient(ellipse at top left, #1a2a45 0%, #000 70%);
-  height: 100vh;
+  min-height: 100vh;
 }

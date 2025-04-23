@@ -11,8 +11,8 @@ interface TopBarProps {
 
 const TopBar: React.FC<TopBarProps> = ({data}) => {
     const {
-        ID, TI, AB, URL, DOM, DP, LANG, REACH, KW, AU, CNTR,
-        CNTR_CODE, SENT, TRAFFIC, FAV, HIGHLIGHTS
+        TI, URL, DOM, DP, LANG, REACH, AU, CNTR,
+        CNTR_CODE, SENT, TRAFFIC, FAV
     } = data;
 
     const formattedDate = useMemo(() => formatDate(DP, LANG), [DP, LANG]);

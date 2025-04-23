@@ -8,6 +8,7 @@ $tag-text: $text-color-light;
 $link-color: #529dff;
 $highlight-bg: #2a5a9e;
 $highlight-text: #ffffff;
+$duplicate-border-color: $link-color;
 
 .news-snippet {
   color: $text-color-light;
@@ -27,6 +28,7 @@ $highlight-text: #ffffff;
     font-size: 14px;
     color: $text-color-medium;
   }
+
   &__top-left {
     display: flex;
     align-items: center;
@@ -76,9 +78,6 @@ $highlight-text: #ffffff;
       &:hover {
         text-decoration: underline;
       }
-    }
-    &--duplicate a {
-      font-size: 16px;
     }
   }
   &__source-info {
@@ -182,6 +181,81 @@ $highlight-text: #ffffff;
       color: $tag-text;
       &:hover {
         background-color: darken($tag-bg, 5%);
+      }
+    }
+  }
+
+  // --- Duplicates Section Styles ---
+  &__duplicates-section {
+    margin-top: 15px;
+    padding-top: 15px; // Space above the header line
+    border-top: 1px solid $border-color; // Separator line
+  }
+
+  &__duplicates-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 0 5px; // Small horizontal padding
+    font-size: 13px;
+    color: $text-color-medium;
+  }
+
+  &__duplicates-count {
+    font-weight: 500;
+  }
+
+  &__duplicates-sort {
+    cursor: pointer; // Indicate it's interactive (even if just display now)
+    &:hover {
+      color: $text-color-light;
+    }
+  }
+
+  // --- Duplicate Item Styles ---
+  &__duplicate-item {
+    border: 1px solid $duplicate-border-color;
+    border-radius: 10px;
+    padding: 10px 15px;
+    margin-bottom: 15px;
+    background-color: transparent;
+
+    .news-snippet__duplicate-top-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .news-snippet__duplicate-top-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+  }
+
+
+  &__view-duplicates {
+    text-align: center; // Center the button
+    margin-top: 5px;
+
+    .view-duplicates-button {
+      background-color: transparent;
+      border: 2px solid $border-color;
+      color: $text-color-medium;
+      font-size: 14px;
+      font-weight: 500;
+      padding: 10px 15px;
+      height: auto;
+      width: 100%;
+      border-radius: 10px;
+
+      .anticon {
+        margin-right: 6px;
+      }
+
+      &:hover, &:focus {
+        border-color: #555;
+        color: $text-color-light;
       }
     }
   }

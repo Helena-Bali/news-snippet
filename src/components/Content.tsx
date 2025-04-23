@@ -1,19 +1,18 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import "./NewsSnippet.scss"
-import { contentToRender, canShowMoreContent, renderShowAllTagsButton, visibleTags} from "../utilits/content-utilits";
-import { Button } from 'antd';
-import { CaretDownOutlined, CaretUpOutlined } from '@ant-design/icons';
-import {IData_SnippetNews, IData_TagItem} from '../interfaces';
+import {contentToRender, canShowMoreContent, renderShowAllTagsButton, visibleTags} from "../utilits/content-utilits";
+import {Button} from 'antd';
+import {CaretDownOutlined, CaretUpOutlined} from '@ant-design/icons';
+import {IData_SnippetNews} from '../interfaces';
 
 interface ContentProps {
     data: IData_SnippetNews;
 }
 
 
-const Content: React.FC<ContentProps> = ({ data }) => {
+const Content: React.FC<ContentProps> = ({data}) => {
     const {
-        ID, TI, AB, URL, DOM, DP, LANG, REACH, KW, AU, CNTR,
-        CNTR_CODE, SENT, TRAFFIC, FAV, HIGHLIGHTS
+        AB, URL, KW, FAV, HIGHLIGHTS
     } = data;
 
     const [showFullContent, setShowFullContent] = useState(false);
@@ -30,7 +29,9 @@ const Content: React.FC<ContentProps> = ({ data }) => {
                         onClick={() => setShowFullContent(!showFullContent)}
                     >
                         {showFullContent ? 'Show less' : 'Show more'}
-                        {showFullContent ? <CaretUpOutlined style={{ marginLeft: '5px' }}/> : <CaretDownOutlined style={{ marginLeft: '5px' }} />}
+                        {showFullContent ?
+                            <CaretUpOutlined style={{marginLeft: '5px'}}/> :
+                            <CaretDownOutlined style={{marginLeft: '5px'}}/>}
                     </div>
                 )}
             </div>
@@ -38,7 +39,7 @@ const Content: React.FC<ContentProps> = ({ data }) => {
             {KW && KW.length > 0 && (
                 <div className="news-snippet__tags">
                     {visibleTags(KW, showAllTags, initialTagLimit)}
-                    {renderShowAllTagsButton(KW, initialTagLimit,showAllTags, setShowAllTags)}
+                    {renderShowAllTagsButton(KW, initialTagLimit, showAllTags, setShowAllTags)}
                 </div>
             )}
 

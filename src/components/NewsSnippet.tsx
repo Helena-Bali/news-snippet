@@ -3,6 +3,7 @@ import "./NewsSnippet.scss"
 import {IData_SnippetNews} from '../interfaces';
 import TopBar from "./TopBar";
 import Content from "./Content"
+import Duplicates from "./Duplicates";
 
 
 interface NewsSnippetProps {
@@ -15,6 +16,7 @@ const NewsSnippet: React.FC<NewsSnippetProps> = ({data}) => {
         <div className="news-snippet" data-id={ID}>
             <TopBar data={data}/>
             <Content data={data}/>
+            <Duplicates/>
         </div>
     );
 };
