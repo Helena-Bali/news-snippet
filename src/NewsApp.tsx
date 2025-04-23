@@ -5,7 +5,7 @@ import {newsData} from "./data";
 const App: React.FC = () => {
     return (
         <div className="main">
-            <NewsSnippet data={newsData}/>
+            <NewsSnippet/>
         </div>
     );
 };

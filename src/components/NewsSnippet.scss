@@ -146,6 +146,14 @@ $duplicate-border-color: $link-color;
       border-radius: 3px;
       font-weight: 500;
     }
+    &__loading-placeholder {
+      min-height: 80px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: $text-color-medium;
+    }
+
   }
   &__show-more-toggle {
     color: $link-color;
